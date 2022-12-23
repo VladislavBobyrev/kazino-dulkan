@@ -1,0 +1,128 @@
+:root {
+  --black: rgb(39 48 53);
+  --light: rgb(255 255 255);
+  --carousel: rgb(21 113 19);
+  --border: rgb(0 0 0 / 30%);
+  --text-shadow: 1px 1px 1px var(--black),
+    1px 2px 1px hsl(0deg 0% 57%),
+    1px 3px 1px hsl(0deg 0% 57%),
+    1px 4px 1px hsl(0deg 0% 57%),
+    2px 10px 6px  rgb(16 16 16 / 40%),
+    2px 12px 8px rgb(16 16 16 / 20%);
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  min-height: stretch;
+  background: var(--black);
+  font-family: 'Aboreto';
+}
+
+.title {
+  position: absolute;
+  top: 3rem;
+  font-size: 4vw;
+  line-height: 100%;
+  color: var(--light);
+}
+
+.carousel {
+  position: relative;
+  z-index: 10;
+  width: 60vh;
+  height: 60vh;
+  border-radius: 50%;
+  background: var(--carousel);
+
+  // border: 3px solid var(--border);
+}
+
+.carousel__btn {
+  position: absolute;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 4rem;
+  height: 4rem;
+  border: 3px solid var(--carousel);
+  border-radius: 50%;
+  background: var(--light);
+  background: linear-gradient(to right, rgb(60, 57, 57), rgb(45 196 241));
+  text-transform: uppercase;
+  text-shadow: var(--text-shadow);
+  font-weight: 600;
+  color: var(--light);
+  transform: translate(-50%, -50%);
+  transition: 0.2s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    width: 2rem;
+    height: 3rem;
+    background: linear-gradient(to right, rgb(60, 57, 57),  rgb(45 196 241));
+
+    // background: var(--light);
+    transform: translateX(-50%);
+    clip-path: polygon(50% 0%, 20% 100%, 80% 100%);
+  }
+
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    transform-origin: center;
+  }
+}
+
+.carousel__cercle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 20px transparent,
+    0 0 0 15px var(--black),
+    0 0 0 25px rgb(45 196 241);
+  transition: 5s ease-in-out;
+}
+
+.cercle__section {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  box-shadow: 0 0 20px transparent,
+    0 0 0 15px var(--black),
+    0 0 0 25px rgb(45 196 241);
+  background: var(--color);
+  transform: rotate(calc(45deg * var(--i)));
+
+  // говорим где будет точка на которой закрепим гвоздь и вокруг нее будет вращаться блок
+  transform-origin: bottom right;
+  clip-path: polygon(0 0, 59% 0, 100% 100%, 0 55%);
+}
+
+.cercle-section__span {
+  position: relative;
+  text-transform: uppercase;
+  text-shadow: var(--text-shadow);
+  font-size: 2.5rem;
+  color: var(--black);
+  transform: rotate(315deg);
+
+  &::after {
+    content: '$';
+    position: absolute;
+    top: -1rem;
+    font-size: 1rem;
+  }
+}
